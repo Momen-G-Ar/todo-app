@@ -1,0 +1,133 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.bd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: black;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 410px;
+    height: 50px;
+    font-weight: 500;
+    font-size: 25px;
+    background-color: antiquewhite;
+}
+
+.wrapper {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    min-height: 100px;
+    max-height: 600px;
+    background-color: rgb(209, 132, 32);
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+
+}
+
+.make_date_and_tasks_div {
+    min-height: 35px;
+    display: flex;
+    flex-basis: 100%;
+    margin-bottom: 10px;
+}
+
+.make_input_div {
+    min-height: 35px;
+    display: flex;
+    flex-basis: 100%;
+    margin-bottom: 10px;
+}
+
+#input {
+    flex-basis: 80%;
+}
+
+.sub {
+    flex-basis: 20%;
+    display: flex;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(176, 176, 176);
+    border: 1px solid gray;
+    font-weight: bold;
+    margin-left: 5px;
+    user-select: none;
+}
+
+.number_of_tasks {
+    margin-top: 0px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+    flex-basis: 50%;
+    background-color: green;
+}
+
+.date_of_nearest_task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+    flex-basis: 50%;
+    background-color: green;
+}
+
+.tasks_div {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    flex-basis: 100%;
+    min-height: 50px;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.task {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    min-height: 50px;
+    flex-basis: 100%;
+    background-color: antiquewhite;
+    border: 1px solid gray;
+}
+
+.data {
+    display: flex;
+    flex-basis: 80%;
+    height: 88%;
+    padding: 5px;
+    background-color: #fff;
+    margin-right: 2px;
+}
+
+.true_and_false {
+    display: flex;
+    flex-basis: 20%;
+    height: 88%;
+    background-color: #fff;
+
+}
