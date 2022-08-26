@@ -117,14 +117,10 @@ const render_array_elements = () => {
                     <div class = "Fl"> 
                         &#10060
                     </div>
-                    &#xf0ad;
                 </div>  
-                <div class = "true_and_false">
-                    <div class = "Ed"> 
-                        &#xf0ad;
-                    </div>
-                </div>  
-                
+                <div class = "Ed">
+                    &#128295
+                </div>
             </div>
         `;
 
