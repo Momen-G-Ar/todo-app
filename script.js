@@ -105,8 +105,14 @@ const render_array_elements = () => {
                     ${array[i].desc} 
                 </div>
                 <div class = "true_and_false">
-                
+                    <div class = "Tr"> 
+                        &#9989
+                    </div>
+                    <div class = "Fl"> 
+                        &#10060
+                    </div>
                 </div>  
+                
             </div>
         `;
 
