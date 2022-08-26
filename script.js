@@ -65,7 +65,7 @@ const Submit = () => {
     {
         let item = {
             desc: inp.value,
-            enter_Date : new Date().toLocaleDateString(),
+            date : new Date().toLocaleDateString(),
         };
         
         array.push(item);
@@ -102,7 +102,13 @@ const render_array_elements = () => {
         x.innerHTML += `
             <div class = "task">
                 <div class = "data">
-                    ${array[i].desc} 
+                    <span> 
+                        ${array[i].desc} 
+                    </span>
+                    <span class = "date_in_task">
+                        ${array[i].date}
+                    </span>
+
                 </div>
                 <div class = "true_and_false">
                     <div class = "Tr"> 
@@ -110,6 +116,12 @@ const render_array_elements = () => {
                     </div>
                     <div class = "Fl"> 
                         &#10060
+                    </div>
+                    &#xf0ad;
+                </div>  
+                <div class = "true_and_false">
+                    <div class = "Ed"> 
+                        &#xf0ad;
                     </div>
                 </div>  
                 
