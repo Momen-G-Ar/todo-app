@@ -8,6 +8,7 @@ const render_screen = () => {
     make_date_and_tasks_div();
     make_input_div();
     make_the_table();
+    add_to_local_storage();
 
 }
 
@@ -51,7 +52,7 @@ const make_input_div = () => {
     x.innerHTML +=
         `
         <div class="make_input_div">
-            <input type="text" name="text" id="input" onkeydown = "add_by_enter(event);">
+            <input type="text" name="text" id="input" placeholder = "Item description" onkeydown = "add_by_enter(event);">
             <button type="submit" id = "submit" class = "sub" onclick = "Submit();"> Submit </button>
         </div>
     
@@ -65,7 +66,7 @@ const Submit = () => {
     {
         let item = {
             desc: inp.value,
-            enter_Date : new Date().toLocaleDateString(),
+            date : new Date().toLocaleDateString(),
         };
         
         array.push(item);
@@ -102,21 +103,40 @@ const render_array_elements = () => {
         x.innerHTML += `
             <div class = "task">
                 <div class = "data">
-                    ${array[i].desc} 
+                    <span> 
+                        ${array[i].desc} 
+                    </span>
+                    <span class = "date_in_task">
+                        ${array[i].date}
+                    </span>
+
                 </div>
                 <div class = "true_and_false">
                     <div class = "Tr"> 
                         &#9989
                     </div>
-                    <div class = "Fl"> 
+                    <div class = "Fl" onclick="delete_task(${i});"> 
                         &#10060
                     </div>
                 </div>  
-                
+                <div class = "Ed">
+                    &#128295
+                </div>
             </div>
         `;
 
     }
+}
+
+const add_to_local_storage = () => {
+    localStorage.array = JSON.stringify(array);
+}
+
+const delete_task = (i) => {
+    array.splice(i, 1);
+    console.log(i);
+    console.log(array);
+    render_screen();
 }
 
 render_screen();

@@ -24,7 +24,9 @@ body {
     height: 50px;
     font-weight: 500;
     font-size: 25px;
-    background-color: antiquewhite;
+    background-color: rgb(219 217 217);
+    border: 1px solid gray;
+    border-radius: 4px;
 }
 
 .wrapper {
@@ -35,7 +37,6 @@ body {
     width: 400px;
     min-height: 100px;
     max-height: 600px;
-    background-color: rgb(209, 132, 32);
     flex-wrap: wrap;
     margin-bottom: 10px;
 
@@ -57,6 +58,8 @@ body {
 
 #input {
     flex-basis: 80%;
+    border-radius: 3px;
+    padding: 3px;
 }
 
 .sub {
@@ -67,9 +70,11 @@ body {
     align-items: center;
     background-color: rgb(176, 176, 176);
     border: 1px solid gray;
+    border-radius: 4px;
     font-weight: bold;
     margin-left: 5px;
     user-select: none;
+    
 }
 
 .number_of_tasks {
@@ -80,7 +85,8 @@ body {
     align-items: center;
     min-height: 30px;
     flex-basis: 50%;
-    background-color: green;
+    border-radius: 3px;
+    border: 1px solid gray;
 }
 
 .date_of_nearest_task {
@@ -89,17 +95,20 @@ body {
     align-items: center;
     min-height: 30px;
     flex-basis: 50%;
-    background-color: green;
+    border: 1px solid gray;
+    border-radius: 3px;
 }
 
 .tasks_div {
     padding: 5px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #fff;
+    background-color: #ededed;
     flex-basis: 100%;
     min-height: 50px;
     max-height: 500px;
+    border: 1px solid gray;
+    border-radius: 3px;
     overflow: auto;
 }
 
@@ -110,16 +119,14 @@ body {
     margin-bottom: 5px;
     min-height: 50px;
     flex-basis: 100%;
-    background-color: antiquewhite;
     border: 1px solid gray;
 }
 
 .data {
-    padding: 5px;
+    flex-wrap: wrap;
     display: flex;
-    flex-basis: 90%;
-    height: 81%;
-    background-color: #fff;
+    flex-basis: 80%;
+    height: 100%;
     margin-right: 2px;
 }
 
@@ -131,36 +138,59 @@ body {
     display: flex;
     flex-basis: 10%;
     height: 100%;
-    background-color: #fff;
-
 }
 .Tr{  
     flex-basis: 100%;
-    height: 45%;
+    height: 47%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
-.Tr:hover{    
+.Tr:hover{   
+    text-shadow: 0 0 5px #347e28; 
     display: flex;
     cursor: pointer;
     user-select: none;
 
 }
 .Fl{
-
-    height: 45%;
+    height: 47%;
     flex-basis: 100%;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
     display: flex;
     font-size: 18px;
 }
 .Fl:hover{
+    text-shadow: 0 0 5px #d51f1f; 
     user-select: none;
     display: flex;
     cursor: pointer;
+}
+.Ed{
+    height: 100%;
+    flex-basis: 10%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 25px;
+    margin-left: 3px;
+}
+.Ed:hover{
+    text-shadow: 0 0 5px #5a5959; 
+    user-select: none;
+    display: flex;
+    cursor: pointer;
+}
+span{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+    min-height: 20px;
+}
+.date_in_task{
+    font-size: 13px;
 }
