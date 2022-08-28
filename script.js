@@ -8,6 +8,7 @@ const render_screen = () => {
     make_date_and_tasks_div();
     make_input_div();
     make_the_table();
+    add_to_local_storage();
 
 }
 
@@ -51,7 +52,7 @@ const make_input_div = () => {
     x.innerHTML +=
         `
         <div class="make_input_div">
-            <input type="text" name="text" id="input" onkeydown = "add_by_enter(event);">
+            <input type="text" name="text" id="input" placeholder = "Item description" onkeydown = "add_by_enter(event);">
             <button type="submit" id = "submit" class = "sub" onclick = "Submit();"> Submit </button>
         </div>
     
@@ -125,6 +126,10 @@ const render_array_elements = () => {
         `;
 
     }
+}
+
+const add_to_local_storage = () => {
+    localStorage.array = JSON.stringify(array);
 }
 
 render_screen();
