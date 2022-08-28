@@ -115,7 +115,7 @@ const render_array_elements = () => {
                     <div class = "Tr"> 
                         &#9989
                     </div>
-                    <div class = "Fl"> 
+                    <div class = "Fl" onclick="delete_task(${i});"> 
                         &#10060
                     </div>
                 </div>  
@@ -130,6 +130,13 @@ const render_array_elements = () => {
 
 const add_to_local_storage = () => {
     localStorage.array = JSON.stringify(array);
+}
+
+const delete_task = (i) => {
+    array.splice(i, 1);
+    console.log(i);
+    console.log(array);
+    render_screen();
 }
 
 render_screen();
