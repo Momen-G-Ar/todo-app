@@ -24,14 +24,14 @@ const add_edit_div_to_bd = () => {
     let x = document.getElementById("bd");
     bd.innerHTML =
     `   
-    <div class="array_task_desc" id = "array_task_desc">
-        <div class="edit_div">
-            <div class="title_in_edit_div">
-                <span class="title_in_edit"> Title : </span>
-                <input type="text"class = "title_placeholder_in_edit">
+        <div class="array_task_desc" id = "array_task_desc">
+            <div class="edit_div">
+                <div class="title_in_edit_div">
+                    <span class="title_in_edit"> Title : </span>
+                    <input type="text"class = "title_placeholder_in_edit"  id = "title_placeholder_in_edit">
+                </div>
             </div>
         </div>
-    </div>
     `;
 }
 
@@ -100,7 +100,7 @@ const Submit = () => {
     if(inp.value != "")
     {
         let item = {
-            title_of_task: inp.value,
+            title_of_task: "" + inp.value,
             add_date : new Date().toLocaleDateString(),
             end_date : 0,
             done : false,
@@ -183,6 +183,10 @@ const done_task = (i) => {
 
 const show_edit_div = (i) => {
     let x = document.getElementById("array_task_desc");
+    let place_holder_in_title = document.getElementById("title_placeholder_in_edit");
+    console.log(place_holder_in_title);
+    place_holder_in_title.value = array[i].title_of_task;
+    
     x.style.display = "flex";
 }
 
