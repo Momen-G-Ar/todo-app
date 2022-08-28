@@ -12,7 +12,6 @@ body {
     height: 100%;
     width: 100%;
     background-color: white;
-    color: black;
 }
 
 .name {
@@ -47,6 +46,7 @@ body {
     display: flex;
     flex-basis: 100%;
     margin-bottom: 10px;
+    user-select: none;
 }
 
 .make_input_div {
@@ -74,7 +74,12 @@ body {
     font-weight: bold;
     margin-left: 5px;
     user-select: none;
-    
+
+}
+
+.sub:hover {
+    box-shadow: 1px 1px 1px 1px #d5d1d1;
+    cursor: pointer;
 }
 
 .number_of_tasks {
@@ -103,7 +108,7 @@ body {
     padding: 5px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #ededed;
+    background-color: #dfdfdf;
     flex-basis: 100%;
     min-height: 50px;
     max-height: 500px;
@@ -113,6 +118,7 @@ body {
 }
 
 .task {
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,6 +126,7 @@ body {
     min-height: 50px;
     flex-basis: 100%;
     border: 1px solid gray;
+    border-radius: 5px;
 }
 
 .data {
@@ -138,8 +145,11 @@ body {
     display: flex;
     flex-basis: 10%;
     height: 100%;
+    user-select: none;
+
 }
-.Tr{  
+
+.Tr {
     flex-basis: 100%;
     height: 47%;
     display: flex;
@@ -147,14 +157,16 @@ body {
     align-items: center;
     margin-bottom: 3px;
 }
-.Tr:hover{   
-    text-shadow: 0 0 5px #347e28; 
+
+.Tr:hover {
+    text-shadow: 0 0 5px #347e28;
     display: flex;
     cursor: pointer;
     user-select: none;
 
 }
-.Fl{
+
+.Fl {
     height: 47%;
     flex-basis: 100%;
     justify-content: center;
@@ -162,13 +174,15 @@ body {
     display: flex;
     font-size: 18px;
 }
-.Fl:hover{
-    text-shadow: 0 0 5px #d51f1f; 
+
+.Fl:hover {
+    text-shadow: 0 0 5px #d51f1f;
     user-select: none;
     display: flex;
     cursor: pointer;
 }
-.Ed{
+
+.Ed {
     height: 100%;
     flex-basis: 10%;
     justify-content: center;
@@ -177,13 +191,15 @@ body {
     font-size: 25px;
     margin-left: 3px;
 }
-.Ed:hover{
-    text-shadow: 0 0 5px #5a5959; 
+
+.Ed:hover {
+    text-shadow: 0 0 5px #5a5959;
     user-select: none;
     display: flex;
     cursor: pointer;
 }
-span{
+
+span {
     font-size: 20px;
     font-weight: 500;
     padding: 5px;
@@ -191,6 +207,59 @@ span{
     width: 100%;
     min-height: 20px;
 }
-.date_in_task{
+
+.date_in_task {
     font-size: 13px;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #8e8d8ddb;
+}
+
+.tr_done {
+    text-decoration: none;
+}
+
+.array_task_desc {
+    top: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: rgba(0, 0, 0, 0.234);
+    color: #ededed;
+    position: absolute;
+    z-index: 0;
+}
+
+.edit_div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 500px;
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.title_placeholder_in_edit
+{
+    padding-left: 5px;
+    margin-top: 25px;
+    height: 30px;
+    width: 250px;
+    border-radius: 3px;
+}
+.title_in_edit_div{
+    margin-left: 15px;
+    user-select: none;
+}
+.title_in_edit
+{
+    color: black;
+    /* background-color: rgb(255, 166, 166); */
+    height: 20px;
+    width: 50px;
 }

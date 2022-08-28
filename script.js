@@ -1,15 +1,50 @@
 let array = localStorage.array ? JSON.parse(localStorage.array) : [];
 
 
+const render_all = () => {
+    let x = document.getElementById("bd");
+    bd.innerHTML = "";
+    add_edit_div_to_bd();
+    add_wrapper();
+}
+
 const render_screen = () => {
 
     let x = document.getElementById("wrapper");
     x.innerHTML = "";
+    
     make_date_and_tasks_div();
     make_input_div();
     make_the_table();
     add_to_local_storage();
 
+}
+
+const add_edit_div_to_bd = () => {
+    let x = document.getElementById("bd");
+    bd.innerHTML =
+    `   
+    <div class="array_task_desc" id = "array_task_desc">
+        <div class="edit_div">
+            <div class="title_in_edit_div">
+                <span class="title_in_edit"> Title : </span>
+                <input type="text"class = "title_placeholder_in_edit">
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+const add_wrapper = () => {
+    let x = document.getElementById("bd");
+    bd.innerHTML += 
+    `
+        <div class="name">To Do App</div>
+        <div class="wrapper" id="wrapper">
+
+        </div>
+    `;
+    render_screen();
 }
 
 const make_date_and_tasks_div = () => {
@@ -65,8 +100,10 @@ const Submit = () => {
     if(inp.value != "")
     {
         let item = {
-            desc: inp.value,
-            date : new Date().toLocaleDateString(),
+            title_of_task: inp.value,
+            add_date : new Date().toLocaleDateString(),
+            end_date : 0,
+            done : false,
         };
         
         array.push(item);
@@ -102,24 +139,25 @@ const render_array_elements = () => {
     {
         x.innerHTML += `
             <div class = "task">
-                <div class = "data">
+                <div class = "data ${array[i].done?"done" : ""}">
                     <span> 
-                        ${array[i].desc} 
+                        ${array[i].title_of_task} 
                     </span>
                     <span class = "date_in_task">
-                        ${array[i].date}
+                        Add Date : ${array[i].add_date} <br/> 
+                        ${array[i].end_date?"End Date : " + array[i].end_date : ""}
                     </span>
 
                 </div>
                 <div class = "true_and_false">
-                    <div class = "Tr"> 
+                    <div class = "Tr ${array[i].done?"tr_done" : ""}" onclick = "done_task(${i});"> 
                         &#9989
                     </div>
                     <div class = "Fl" onclick="delete_task(${i});"> 
                         &#10060
                     </div>
                 </div>  
-                <div class = "Ed">
+                <div class = "Ed" onclick = "show_edit_div(${i});">
                     &#128295
                 </div>
             </div>
@@ -134,9 +172,18 @@ const add_to_local_storage = () => {
 
 const delete_task = (i) => {
     array.splice(i, 1);
-    console.log(i);
-    console.log(array);
     render_screen();
 }
 
-render_screen();
+const done_task = (i) => {
+    
+    array[i].done = !array[i].done;
+    render_screen();
+}
+
+const show_edit_div = (i) => {
+    let x = document.getElementById("array_task_desc");
+    x.style.display = "flex";
+}
+
+render_all();
