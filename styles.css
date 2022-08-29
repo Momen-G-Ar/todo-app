@@ -26,6 +26,7 @@ body {
     background-color: rgb(219 217 217);
     border: 1px solid gray;
     border-radius: 4px;
+    user-select: none;
 }
 
 .wrapper {
@@ -155,7 +156,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .Tr:hover {
@@ -182,14 +183,26 @@ body {
     cursor: pointer;
 }
 
-.Ed {
-    height: 100%;
+.edit_and_description {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 20px;
+    display: flex;
     flex-basis: 10%;
+    height: 100%;
+    user-select: none;
+}
+
+.Ed {
+    height: 47%;
+    flex-basis: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
     font-size: 25px;
     margin-left: 3px;
+    margin-top: 2px;
 }
 
 .Ed:hover {
@@ -197,6 +210,22 @@ body {
     user-select: none;
     display: flex;
     cursor: pointer;
+}
+
+.description {
+    height: 47%;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 25px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+.description:hover {
+    cursor: pointer;
+    text-shadow: 0 0 5px #5a5959;
 }
 
 span {
@@ -231,35 +260,134 @@ span {
     background-color: rgba(0, 0, 0, 0.234);
     color: #ededed;
     position: absolute;
-    z-index: 0;
+    z-index: 5;
 }
 
 .edit_div {
+    margin-bottom: 1px;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     height: 500px;
     width: 400px;
     background-color: #fff;
     border: 1px solid gray;
     border-radius: 4px;
 }
-.title_placeholder_in_edit
-{
-    padding-left: 5px;
+
+.title_in_edit_div {
     margin-top: 25px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 15px;
+    min-height: 20px;
+    user-select: none;
+    flex-basis: 10%;
+    width: 90%;
+}
+
+.title_placeholder_in_edit {
+    padding-left: 5px;
     height: 30px;
     width: 250px;
     border-radius: 3px;
 }
-.title_in_edit_div{
-    margin-left: 15px;
-    user-select: none;
-}
-.title_in_edit
-{
+
+.title_in_edit {
     color: black;
     /* background-color: rgb(255, 166, 166); */
     height: 20px;
     width: 50px;
+}
+
+.end_date_in_edit_div {
+    margin-bottom: 1px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 15px;
+    min-height: 20px;
+    user-select: none;
+    flex-basis: 10%;
+    width: 90%;
+}
+
+.end_date_in_edit {
+    color: black;
+    height: 20px;
+    width: 100px;
+}
+
+#end_date {
+    border-radius: 3px;
+    border: 2px solid green;
+    font-size: 15px;
+    font-family: cursive;
+    color: rgb(131, 131, 245);
+    width: 202px;
+    padding: 2px;
+
+}
+
+.Description_in_edit_div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 15px;
+    min-height: 20px;
+    user-select: none;
+    flex-basis: 50%;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.description_in_edit {
+    color: black;
+    height: 20px;
+    width: 110px;
+    background-color: #fff;
+    margin-right: 5px;
+}
+
+.buttons_in_edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 15px;
+    min-height: 20px;
+    user-select: none;
+    flex-basis: 10%;
+    width: 93%;
+}
+.cancel_button{
+    display: flex;
+    color: black;
+    background-color: gray;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 60px;
+    box-shadow: 1px 1px 1px 1px rgb(81, 80, 80);
+}
+.cancel_button:hover{
+    box-shadow: 1px 1px 5px 1px rgb(81, 80, 80);
+    cursor: pointer;
+}
+.save_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: gray;
+    height: 35px;
+    width: 60px;
+    box-shadow: 1px 1px 1px 1px rgb(81, 80, 80);
+}
+.save_button:hover{
+    box-shadow: 1px 1px 5px 1px rgb(81, 80, 80);
+    cursor: pointer;
+
 }
