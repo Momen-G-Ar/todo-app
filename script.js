@@ -236,13 +236,7 @@ const show_edit_div = (i) => {
 
     place_holder_in_title.value = array[i].title_of_task;
     place_holder_text_area.value = array[i].description;
-
     place_holder_of_date.value = in_format_date(array[i].end_date);
-    console.log(place_holder_of_date.value);
-    console.log(1);
-
-
-
 
 
     x.style.display = "flex";
