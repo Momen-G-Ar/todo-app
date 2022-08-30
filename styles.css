@@ -280,18 +280,18 @@ span {
     margin-top: 25px;
     padding-top: 10px;
     padding-left: 10px;
-    margin-left: 15px;
     min-height: 20px;
     user-select: none;
     flex-basis: 10%;
-    width: 90%;
+    width: 95%;
 }
 
 .title_placeholder_in_edit {
     padding-left: 5px;
     height: 30px;
-    width: 250px;
+    width: 280px;
     border-radius: 3px;
+    border: 2px solid rgba(0, 128, 0, 0.561);
 }
 
 .title_in_edit {
@@ -305,11 +305,10 @@ span {
     margin-bottom: 1px;
     padding-top: 10px;
     padding-left: 10px;
-    margin-left: 15px;
     min-height: 20px;
     user-select: none;
     flex-basis: 10%;
-    width: 90%;
+    width: 95%;
 }
 
 .end_date_in_edit {
@@ -320,11 +319,11 @@ span {
 
 #end_date {
     border-radius: 3px;
-    border: 2px solid green;
+    border: 2px solid rgba(0, 128, 0, 0.561);
     font-size: 15px;
     font-family: cursive;
-    color: rgb(131, 131, 245);
-    width: 202px;
+    color: rgb(225, 56, 41);
+    width: 232px;
     padding: 2px;
 
 }
@@ -335,11 +334,10 @@ span {
     align-items: flex-start;
     padding-top: 10px;
     padding-left: 10px;
-    margin-left: 15px;
     min-height: 20px;
     user-select: none;
     flex-basis: 50%;
-    width: 90%;
+    width: 95%;
     margin-bottom: 10px;
 }
 
@@ -349,6 +347,7 @@ span {
     width: 110px;
     background-color: #fff;
     margin-right: 5px;
+    
 }
 
 .buttons_in_edit {
@@ -356,16 +355,20 @@ span {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-left: 15px;
     min-height: 20px;
     user-select: none;
     flex-basis: 10%;
-    width: 93%;
+    width: 100%;
+    
+}
+textarea{
+    border: 2px solid rgba(0, 128, 0, 0.561);
+    border-radius: 3px;
 }
 .cancel_button{
     display: flex;
     color: black;
-    background-color: gray;
+    background-color: rgb(205, 205, 205);
     justify-content: center;
     align-items: center;
     height: 35px;
@@ -381,7 +384,7 @@ span {
     justify-content: center;
     align-items: center;
     color: black;
-    background-color: gray;
+    background-color: rgb(205, 205, 205);
     height: 35px;
     width: 60px;
     box-shadow: 1px 1px 1px 1px rgb(81, 80, 80);

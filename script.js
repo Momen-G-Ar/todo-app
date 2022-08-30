@@ -36,17 +36,7 @@ let in_format_date = (date) => {
 } 
 
 const add_edit_div_to_bd = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1;
-    let yyyy = today.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    today = yyyy + '-' + mm + '-' + dd;
+    let today = in_format_date(new Date());
 
     let x = document.getElementById("bd");
     bd.innerHTML =
@@ -69,7 +59,7 @@ const add_edit_div_to_bd = () => {
                     <div class ="cancel_button" onclick = "hide_edit_div();">
                         Cancel
                     </div> 
-                    <div class = "save_button">
+                    <div class = "save_button" onclick = "save_from_edit();">
                         Save
                     </div>
                 </div>
@@ -227,7 +217,6 @@ const done_task = (i) => {
 }
 
 const show_edit_div = (i) => {
-    console.log(array[i]);
     let x = document.getElementById("array_task_desc"); // the div 
     // element information 
     let place_holder_in_title = document.getElementById("title_placeholder_in_edit");
@@ -240,6 +229,10 @@ const show_edit_div = (i) => {
 
 
     x.style.display = "flex";
+}
+
+const save_from_edit = (i) => {
+
 }
 
 const hide_edit_div = () => {
