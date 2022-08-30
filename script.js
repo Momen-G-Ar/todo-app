@@ -55,13 +55,8 @@ const add_edit_div_to_bd = () => {
                     <span class="description_in_edit" id = "description_in_edit"> Description : </span>
                     <textarea name="textArea" id="text_area_in_edit" cols="28" rows="15"></textarea>      
                 </div>
-                <div class = "buttons_in_edit">
-                    <div class ="cancel_button" onclick = "hide_edit_div();">
-                        Cancel
-                    </div> 
-                    <div class = "save_button" onclick = "save_from_edit();">
-                        Save
-                    </div>
+                <div class = "buttons_in_edit" id = "buttons_in_edit">
+                    
                 </div>
             </div>
         </div>
@@ -133,8 +128,8 @@ const Submit = () => {
     if (inp.value != "") {
         let item = {
             title_of_task: "" + inp.value,
-            add_date: new Date().toLocaleDateString(),
-            end_date: new Date().toLocaleDateString(),
+            add_date: in_format_date(new Date().toLocaleDateString()),
+            end_date: in_format_date(new Date().toLocaleDateString()),
             done: false,
             description: '',
         };
@@ -164,17 +159,33 @@ const add_by_enter = (event) => {
 
 }
 
+let comp = (i, end, now) => {
+    let x = new Date(end);
+    let y = new Date(now);
+
+    if(x.getFullYear() != y.getFullYear())
+    {
+        return x.getFullYear() > y.getFullYear();
+    }
+    else if(x.getMonth() != y.getMonth())
+    {
+        return x.getMonth() > y.getMonth();
+    }
+    else
+        return x.getDate() >= y.getDate();
+}
+
 const render_array_elements = () => {
     let x = document.getElementById("tasks_div");
     for (let i = 0; i < array.length; i++) {
         x.innerHTML += `
             <div class = "task">
-                <div class = "data ${array[i].done ? "done" : ""}">
+                <div class = "data ${array[i].done ? "done" : ""} ${!comp(i, array[i].end_date, new Date() && !array[i].done)? "late" : ""}">
                     <span title = "Title of task"> 
                         ${array[i].title_of_task} 
                     </span>
                     <span class = "date_in_task">
-                        Add Date : ${array[i].add_date} <br/> 
+                        Add Date : ${in_format_date(array[i].add_date)} <br/> 
                         ${array[i].end_date ? "End Date : " + array[i].end_date : ""}
                     </span>
 
@@ -227,12 +238,33 @@ const show_edit_div = (i) => {
     place_holder_text_area.value = array[i].description;
     place_holder_of_date.value = in_format_date(array[i].end_date);
 
-
+    let y = document.getElementById("buttons_in_edit");
+    y.innerHTML = 
+    `
+        <div class ="cancel_button" onclick = "hide_edit_div();">
+            Cancel
+        </div> 
+        <div class = "save_button" onclick = "save_from_edit(${i});">
+            Save
+        </div>
+    
+    `;
     x.style.display = "flex";
 }
 
 const save_from_edit = (i) => {
+    let place_holder_in_title = document.getElementById("title_placeholder_in_edit");
+    let place_holder_of_date = document.getElementById("end_date");
+    let place_holder_text_area = document.getElementById("text_area_in_edit");
 
+    if(place_holder_in_title != "")
+        array[i].title_of_task = place_holder_in_title.value;
+
+    array[i].end_date = place_holder_of_date.value;
+    array[i].description = place_holder_text_area.value;
+
+    hide_edit_div();
+    render_all();
 }
 
 const hide_edit_div = () => {

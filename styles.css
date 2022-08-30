@@ -243,7 +243,11 @@ span {
 
 .done {
     text-decoration: line-through;
-    color: #8e8d8ddb;
+    color: #02b15a;
+}
+.late{
+    text-decoration: line-through;
+    color: #ee0404db;
 }
 
 .tr_done {
@@ -394,3 +398,4 @@ textarea{
     cursor: pointer;
 
 }
+
