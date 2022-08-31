@@ -33,32 +33,14 @@ let in_format_date = (date) => {
     }
     today = yyyy + '-' + mm + '-' + dd;
     return today;
-} 
+}
 
 const add_edit_div_to_bd = () => {
-    let today = in_format_date(new Date());
-
     let x = document.getElementById("bd");
     bd.innerHTML =
         `   
         <div class="array_task_desc" id = "array_task_desc">
-            <div class="edit_div">
-                <div class="title_in_edit_div">
-                    <span class="title_in_edit"> Title : </span>
-                    <input type="text"class = "title_placeholder_in_edit"  id = "title_placeholder_in_edit">
-                </div>
-                <div class = "end_date_in_edit_div"> 
-                    <span class="end_date_in_edit" id = "end_date_in_edit"> End date : </span>
-                    <input type = "date" id = "end_date" title ="End Date" min = "${today}"/>
-                </div>
-                <div class = "Description_in_edit_div"> 
-                    <span class="description_in_edit" id = "description_in_edit"> Description : </span>
-                    <textarea name="textArea" id="text_area_in_edit" cols="28" rows="15"></textarea>      
-                </div>
-                <div class = "buttons_in_edit" id = "buttons_in_edit">
-                    
-                </div>
-            </div>
+            
         </div>
     `;
 }
@@ -93,7 +75,7 @@ const make_date = () => {
     x.innerHTML +=
         `
         <div class="date_of_nearest_task">
-            ${new Date().toLocaleDateString()}
+            ${in_format_date(new Date().toLocaleDateString())}
             
         </div>
     ` ;
@@ -101,10 +83,14 @@ const make_date = () => {
 
 const calculate_number_of_tasks = () => {
     let x = document.getElementById("make_date_and_tasks_div");
+    let num = 0;
+    for (let i = 0; i < array.length; i++)
+        num += (array[i].done == 0 &&
+            comp(i, array[i].end_date, new Date().toDateString()));
     x.innerHTML +=
         `
         <div class="number_of_tasks">
-            ${array.length}
+            ${num}
         </div>
     
     `;
@@ -163,56 +149,66 @@ let comp = (i, end, now) => {
     let x = new Date(end);
     let y = new Date(now);
 
-    if(x.getFullYear() != y.getFullYear())
-    {
+    if (x.getFullYear() != y.getFullYear()) {
         return x.getFullYear() > y.getFullYear();
     }
-    else if(x.getMonth() != y.getMonth())
-    {
+    else if (x.getMonth() != y.getMonth()) {
         return x.getMonth() > y.getMonth();
     }
-    else
-    {
+    else {
         return x.getDate() >= y.getDate();
     }
 }
 
 const render_array_elements = () => {
     let x = document.getElementById("tasks_div");
-    for (let i = 0; i < array.length; i++) {
-        x.innerHTML += `
-            <div class = "task">
-                <div class = "data ${array[i].done ? "done" : ""} ${(!comp(i, array[i].end_date, new Date().toDateString()) && !array[i].done)? "late" : ""}">
-                    <span title = "Title of task"> 
-                        ${array[i].title_of_task} 
-                    </span>
-                    <span class = "date_in_task">
-                        Add Date : ${in_format_date(array[i].add_date)} <br/> 
-                        ${array[i].end_date ? "End Date : " + array[i].end_date : ""}
-                    </span>
-
-                </div>
-                <div class = "true_and_false">
-                    <div title = "Done" class = "Tr ${array[i].done ? "tr_done" : ""}" onclick = "done_task(${i});"> 
-                        &#9989
-                    </div>
-                    <div title = "Delete"class = "Fl" onclick="delete_task(${i});"> 
-                        &#10060
-                    </div>
-                </div>  
-                <div class = "edit_and_description">
-                    <div class = "Ed" title = "Edit" onclick = "show_edit_div(${i});">
-                        &#128295
-                    </div>
-                    <div class="description" title = "Description">
-                        &#128196
-                    </div>
-                </div>
-            </div>
+    if(array.length == 0)
+    {
+        x.innerHTML = 
+        `
+            <span> 
+                There is no tasks &#9989
+            </span>
         `;
-
     }
-}
+    else
+    {
+
+        for (let i = 0; i < array.length; i++) {
+                x.innerHTML += 
+                `
+                    <div class = "task">
+                        <div class = "data ${array[i].done ? "done" : ""} ${(!comp(i, array[i].end_date, new Date().toDateString()) && !array[i].done) ? "late" : ""}">
+                            <span title = "Title of task"> 
+                                ${array[i].title_of_task} 
+                            </span>
+                            <span class = "date_in_task">
+                                Add Date : ${in_format_date(array[i].add_date)} <br/> 
+                                ${array[i].end_date ? "End Date : " + array[i].end_date : ""}
+                            </span>
+                        </div>
+                        <div class = "true_and_false">
+                            <div title = "Done" class = "Tr ${array[i].done ? "tr_done" : ""}" onclick = "done_task(${i});"> 
+                                &#9989
+                            </div>
+                            <div title = "Delete"class = "Fl" onclick="delete_task(${i});"> 
+                                &#10060
+                            </div>
+                        </div>  
+                        <div class = "edit_and_description">
+                            <div class = "Ed" title = "Edit" onclick = "show_edit_div(${i});">
+                                &#128295
+                            </div>
+                            <div class="description" title = "Description" onclick = "show_description_div(${i});">
+                                &#128196
+                            </div>
+                        </div>
+                    </div>
+                `;
+                    
+            }
+        }
+    }
 
 const add_to_local_storage = () => {
     localStorage.array = JSON.stringify(array);
@@ -230,7 +226,35 @@ const done_task = (i) => {
 }
 
 const show_edit_div = (i) => {
+    let today = in_format_date(new Date());
     let x = document.getElementById("array_task_desc"); // the div 
+    x.innerHTML =
+        `
+        <div class="edit_div">
+            <div class="title_in_edit_div">
+                <span class="title_in_edit"> Title : </span>
+                <input type="text"class = "title_placeholder_in_edit"  id = "title_placeholder_in_edit">
+            </div>
+            <div class = "end_date_in_edit_div"> 
+                <span class="end_date_in_edit" id = "end_date_in_edit"> End date : </span>
+                <input type = "date" id = "end_date" title ="End Date" min = "${today}"/>
+            </div>
+            <div class = "Description_in_edit_div"> 
+                <span class="description_in_edit" id = "description_in_edit"> Description : </span>
+                <textarea name="textArea" id="text_area_in_edit" cols="29" rows="15"></textarea>      
+            </div>
+            <div class = "buttons_in_edit" id = "buttons_in_edit">
+                <div class ="cancel_button" onclick = "hide_edit_div();">
+                    Cancel
+                </div> 
+                <div class = "save_button" onclick = "save_from_edit(${i});">
+                    Save
+                </div>
+            </div>
+        </div>
+        
+    
+    `;
     // element information 
     let place_holder_in_title = document.getElementById("title_placeholder_in_edit");
     let place_holder_of_date = document.getElementById("end_date");
@@ -239,18 +263,6 @@ const show_edit_div = (i) => {
     place_holder_in_title.value = array[i].title_of_task;
     place_holder_text_area.value = array[i].description;
     place_holder_of_date.value = in_format_date(array[i].end_date);
-
-    let y = document.getElementById("buttons_in_edit");
-    y.innerHTML = 
-    `
-        <div class ="cancel_button" onclick = "hide_edit_div();">
-            Cancel
-        </div> 
-        <div class = "save_button" onclick = "save_from_edit(${i});">
-            Save
-        </div>
-    
-    `;
     x.style.display = "flex";
 }
 
@@ -259,7 +271,7 @@ const save_from_edit = (i) => {
     let place_holder_of_date = document.getElementById("end_date");
     let place_holder_text_area = document.getElementById("text_area_in_edit");
 
-    if(place_holder_in_title != "")
+    if (place_holder_in_title != "")
         array[i].title_of_task = place_holder_in_title.value;
 
     array[i].end_date = place_holder_of_date.value;
@@ -270,6 +282,49 @@ const save_from_edit = (i) => {
 }
 
 const hide_edit_div = () => {
+    let x = document.getElementById("array_task_desc");
+    x.style.display = "none";
+}
+
+const show_description_div = (i) => {
+    let x = document.getElementById("array_task_desc");
+    x.innerHTML =
+        `   
+        <div class="description_div" id = "description_div">
+            <div class ="close_in_description_div">
+                <span class = "button_in_description_to_close" onclick = "hide_description_div();">
+                    &#10006;
+                </span>
+            </div>
+            <div class="title_in_description_div">
+                <span class="title_in_description"> 
+                    Title : 
+                </span>
+                <span class="title_in_description_of_place_holder"> ${array[i].title_of_task} </span>
+            </div>
+            <div class = "end_date_in_description_div"> 
+                <span class="title_of_end_date_in_description" id = "title_of_end_date_in_description">
+                    End date : 
+                </span>
+                <span class="end_date_in_description" > 
+                    ${array[i].end_date} 
+                </span>
+            </div>
+            <div class = "Description_in_description_div"> 
+                <span class="description_in_description" id = "description_in_description">
+                    Description : 
+                </span>
+                <div class = "description_of_task"> 
+                    ${array[i].description == "" ? "Nothing" : array[i].description}
+                </div>      
+            </div>
+
+        </div>
+    `;
+    x.style.display = "flex";
+}
+
+const hide_description_div = () => {
     let x = document.getElementById("array_task_desc");
     x.style.display = "none";
 }
