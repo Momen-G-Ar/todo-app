@@ -172,7 +172,9 @@ let comp = (i, end, now) => {
         return x.getMonth() > y.getMonth();
     }
     else
+    {
         return x.getDate() >= y.getDate();
+    }
 }
 
 const render_array_elements = () => {
@@ -180,7 +182,7 @@ const render_array_elements = () => {
     for (let i = 0; i < array.length; i++) {
         x.innerHTML += `
             <div class = "task">
-                <div class = "data ${array[i].done ? "done" : ""} ${!comp(i, array[i].end_date, new Date() && !array[i].done)? "late" : ""}">
+                <div class = "data ${array[i].done ? "done" : ""} ${(!comp(i, array[i].end_date, new Date().toDateString()) && !array[i].done)? "late" : ""}">
                     <span title = "Title of task"> 
                         ${array[i].title_of_task} 
                     </span>
