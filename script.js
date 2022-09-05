@@ -119,7 +119,6 @@ const Submit = () => {
             done: false,
             description: '',
         };
-
         array.push(item);
         inp.value = "";
     }
@@ -148,7 +147,6 @@ const add_by_enter = (event) => {
 let comp = (i, end, now) => {
     let x = new Date(end);
     let y = new Date(now);
-
     if (x.getFullYear() != y.getFullYear()) {
         return x.getFullYear() > y.getFullYear();
     }
@@ -161,6 +159,12 @@ let comp = (i, end, now) => {
 }
 
 const render_array_elements = () => {
+    array.sort(function (ob1, ob2) {
+        const date1 = new Date(ob1.end_date);
+        const date2 = new Date(ob2.end_date);
+        return date1 - date2;
+    });
+
     let x = document.getElementById("tasks_div");
     if(array.length == 0)
     {
